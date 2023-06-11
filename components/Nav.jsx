@@ -5,16 +5,18 @@ import {signIn, signOut, useSession, getProviders} from 'next-auth/react';
 import { useEffect, useState } from 'react';
 
 const Nav = () => {
-  const isLoggedIn = true;
+  const {data: session} = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, settoggleDropdown] = useState(false);
+
   useEffect(()=>{
-    const setProviders = async()=>{
+    const setUpProviders = async()=>{
       const res = await getProviders();
       setProviders(res);
     }
-    setProviders();
+    setUpProviders();
   },[])
+  
   return (
     <nav className='w-full flex-between mb-16 pt-3'>
       <Link href='/' className='flex gp-2 flex-center'>
@@ -27,9 +29,12 @@ const Nav = () => {
           <p className='logo_text mr-1'>Promptoverse</p>
       </Link>
 
+      {/* {alert(session?.user)} */}
+      {/* {alert(providers)} */}
+
       {/* Desktop navigation */}
       <div className='sm:flex hidden'>
-        {isLoggedIn ? (
+        {session?.user ? (
           //if signed in
           <div className='flex gap-3 md:gap-5'>
             <Link href='/create-prompt' className='black_btn'>
@@ -74,7 +79,7 @@ const Nav = () => {
 
       {/* mobile navigation */}
       <div className='sm:hidden flex relative'>
-        {isLoggedIn ? (
+        {session?.user ? (
           <div className='flex'>
             <Image 
                 src='/assets/images/logo.svg' 
