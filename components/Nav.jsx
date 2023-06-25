@@ -20,7 +20,7 @@ const Nav = () => {
   return (
     <nav className='w-full flex-between mb-16 pt-3'>
       <Link href='/' className='flex gp-2 flex-center'>
-          <p className='logo_text mr-1'>Promptoverse</p>
+          <p className='rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center font-inter flex items-center justify-center font-semibold'>Promptoverse</p>
       </Link>
 
       {/* {alert(session?.user)} */}
