@@ -1,3 +1,4 @@
+'use client'
 import Feed from "@/components/Feed"
 
 const Home = () => {
@@ -5,9 +6,9 @@ const Home = () => {
     <section className="w-full flex-center flex-col">
         <h1 className="head_text text-center">Discover & Share
             <br/>
-            <span className="orange_gradient text-center"> Amazing AI prompts</span>
+            <span className="blue_gradient text-center"> Amazing AI prompts</span>
         </h1>
-        <p className="desc text-center">Elevate your creativity with Promptoverse - the open-source AI prompt generator for modern creators.</p>
+        <p className="desc text-center">Elevate your creativity with Promptoverse - your AI prompt companion</p>
         <Feed/>
     </section>
   )

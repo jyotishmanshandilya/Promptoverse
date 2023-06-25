@@ -20,12 +20,6 @@ const Nav = () => {
   return (
     <nav className='w-full flex-between mb-16 pt-3'>
       <Link href='/' className='flex gp-2 flex-center'>
-        <Image 
-          src='/assets/images/logo.svg' 
-          alt='Promptoverse logo' 
-          width={30} 
-          height={30} 
-          className='object-contain'/>
           <p className='logo_text mr-1'>Promptoverse</p>
       </Link>
 
@@ -50,10 +44,11 @@ const Nav = () => {
 
             <Link href='/profile'>
               <Image 
-                src='/assets/images/logo.svg' 
+                src={session?.user.image}
                 alt='Profile image'
                 width={30}
                 height={30}
+                className='rounded-full'
               />
             </Link>
           </div>
@@ -82,14 +77,21 @@ const Nav = () => {
         {session?.user ? (
           <div className='flex'>
             <Image 
-                src='/assets/images/logo.svg' 
+                src={session?.user.image} 
                 alt='Profile image'
                 width={30}
                 height={30}
+                className='rounded-full'
                 onClick={()=>settoggleDropdown((prev)=>!prev)}
               />
               {toggleDropdown && (
                 <div className='dropdown'>
+                  <Link 
+                    href='/' 
+                    className='dropdown_link' 
+                    onClick={()=>settoggleDropdown(false)}>
+                      Home Page
+                  </Link>
                   <Link 
                     href='/profile' 
                     className='dropdown_link' 
